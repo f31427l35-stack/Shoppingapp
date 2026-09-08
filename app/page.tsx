@@ -1,2 +1,38 @@
-import Header from "@/components/Header";import CategoryMenu from "@/components/CategoryMenu";import FlashSale from "@/components/FlashSale";import ProductCard from "@/components/ProductCard";import{products}from "@/lib/products";
-export default function Home(){return <main><Header/><div className="container mt-5"><div className="flex gap-4"><CategoryMenu/><div className="min-w-0 flex-1"><section className="relative min-h-[330px] overflow-hidden rounded-md bg-gradient-to-r from-[#222] to-[#555]"><div className="absolute inset-0 bg-black/20"/><div className="relative z-10 flex min-h-[330px] flex-col justify-center px-7 text-white sm:px-12"><span className="mb-3 text-sm font-bold uppercase tracking-[3px] text-[#f7b500]">Shop smarter</span><h1 className="max-w-[550px] text-4xl font-black leading-tight sm:text-5xl">Everything you need.<br/>All in one place.</h1><p className="mt-4 max-w-[500px] text-gray-200">Discover great products, amazing deals and convenient shopping from your phone or computer.</p><button className="mt-6 w-fit rounded-md bg-[#f7b500] px-7 py-3 font-bold text-[#222] hover:bg-[#e09f00]">SHOP NOW</button></div></section></div></div></div><FlashSale/><section className="container mt-7"><div className="mb-3 flex items-center justify-between"><h2 className="text-xl font-bold">Recommended For You</h2><button className="text-sm font-bold text-[#d99d00]">SEE ALL →</button></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div></section><footer className="mt-12 bg-[#222] py-10 text-white"><div className="container grid gap-8 sm:grid-cols-2 md:grid-cols-4"><div><h3 className="mb-3 text-lg font-bold">SHOPZONE</h3><p className="text-sm text-gray-400">Your online marketplace for everyday products.</p></div><div><h3 className="mb-3 font-bold">Customer Service</h3><p className="text-sm text-gray-400">Help Center</p><p className="text-sm text-gray-400">Returns</p><p className="text-sm text-gray-400">Track Order</p></div><div><h3 className="mb-3 font-bold">About</h3><p className="text-sm text-gray-400">About Us</p><p className="text-sm text-gray-400">Sell With Us</p><p className="text-sm text-gray-400">Careers</p></div><div><h3 className="mb-3 font-bold">Follow Us</h3><p className="text-sm text-gray-400">Facebook</p><p className="text-sm text-gray-400">Instagram</p><p className="text-sm text-gray-400">TikTok</p></div></div></footer></main>}
+import Header from "@/components/Header";
+import CategoryMenu from "@/components/CategoryMenu";
+import HeroBanner from "@/components/HeroBanner";
+import TopCategoriesRow from "@/components/TopCategoriesRow";
+import FlashSale from "@/components/FlashSale";
+import ProductCard from "@/components/ProductCard";
+import Footer from "@/components/Footer";
+import { products } from "@/lib/products";
+
+export default function Home() {
+  return (
+    <main>
+      <Header />
+      <div className="container mt-5">
+        <div className="flex gap-4">
+          <CategoryMenu />
+          <div className="min-w-0 flex-1">
+            <HeroBanner />
+          </div>
+        </div>
+      </div>
+      <TopCategoriesRow />
+      <FlashSale />
+      <section className="container mt-7">
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-xl font-bold">Recommended For You</h2>
+          <span className="text-sm font-bold text-brand">SEE ALL →</span>
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+          {products.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
+      <Footer />
+    </main>
+  );
+}
