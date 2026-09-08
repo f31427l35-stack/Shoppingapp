@@ -12,7 +12,7 @@ export function generateStaticParams() {
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const product = getProductById(Number(params.id));
-  if (!product) notFound();https://github.com/f31427l35-stack/Shoppingapp/tree/main/components
+  if (!product) notFound();
 
   const related = getRelatedProducts(product);
   const category = categories.find((c) => c.slug === product.category);
