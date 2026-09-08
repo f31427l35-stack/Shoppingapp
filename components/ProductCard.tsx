@@ -1,2 +1,57 @@
-type Product={id:number;name:string;price:number;oldPrice?:number;rating:number;image:string;discount?:number};
-export default function ProductCard({product}:{product:Product}){return <div className="group overflow-hidden rounded-md bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"><div className="relative flex h-[210px] items-center justify-center overflow-hidden bg-gray-100">{product.discount&&<span className="absolute right-2 top-2 z-10 rounded bg-red-500 px-2 py-1 text-xs font-bold text-white">-{product.discount}%</span>}<img src={product.image} alt={product.name} className="h-full w-full object-cover transition duration-300 group-hover:scale-105"/></div><div className="p-3"><h3 className="line-clamp-2 min-h-[40px] text-sm font-medium">{product.name}</h3><div className="mt-2"><span className="text-lg font-bold">KSh {product.price.toLocaleString()}</span>{product.oldPrice&&<span className="ml-2 text-xs text-gray-400 line-through">KSh {product.oldPrice.toLocaleString()}</span>}</div><div className="mt-1 text-sm"><span className="text-[#f7b500]">{"★".repeat(Math.round(product.rating))}</span><span className="ml-1 text-gray-400">{product.rating.toFixed(1)}</span></div><button className="mt-3 w-full rounded bg-[#f7b500] py-2 text-sm font-bold text-[#222] hover:bg-[#e09f00]">Add to Cart</button></div></div>}
+"use client";
+import Link from "next/link";
+import type { Product } from "@/lib/products";
+import { useCart } from "@/context/CartContext";
+
+export default function ProductCard({ product }: { product: Product }) {
+  const { addItem } = useCart();
+
+  return (
+    <div className="group relative overflow-hidden rounded-md bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+      <Link href={`/product/${product.id}`}>
+        <div className="relative flex h-[210px] items-center justify-center overflow-hidden bg-gray-100">
+          {product.discount && (
+            <span className="absolute right-2 top-2 z-10 rounded bg-sale px-2 py-1 text-xs font-bold text-white">
+              -{product.discount}%
+            </span>
+          )}
+          {product.express && (
+            <span className="absolute left-2 top-2 z-10 rounded bg-brand px-2 py-1 text-[10px] font-bold uppercase text-white">
+              Express
+            </span>
+          )}
+          <img
+            src={product.image}
+            alt={product.name}
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          />
+        </div>
+        <div className="p-3 pb-0">
+          <h3 className="line-clamp-2 min-h-[40px] text-sm font-medium text-ink">{product.name}</h3>
+          <div className="mt-2">
+            <span className="text-lg font-bold">KSh {product.price.toLocaleString()}</span>
+            {product.oldPrice && (
+              <span className="ml-2 text-xs text-gray-400 line-through">
+                KSh {product.oldPrice.toLocaleString()}
+              </span>
+            )}
+          </div>
+          <div className="mt-1 text-sm">
+            <span className="text-brand">{"★".repeat(Math.round(product.rating))}</span>
+            <span className="ml-1 text-gray-400">
+              {product.rating.toFixed(1)} ({product.reviews})
+            </span>
+          </div>
+        </div>
+      </Link>
+      <div className="p-3 pt-3">
+        <button
+          onClick={() => addItem(product)}
+          className="w-full rounded bg-brand py-2 text-sm font-bold text-white hover:bg-brand-dark"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+}
