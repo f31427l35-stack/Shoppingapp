@@ -1,0 +1,9 @@
+export const products=[
+{id:1,name:"Smartphone 128GB Dual SIM",price:18999,oldPrice:22999,rating:4.5,discount:17,image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=600"},
+{id:2,name:"Wireless Bluetooth Headphones",price:2499,oldPrice:3999,rating:4.3,discount:38,image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"},
+{id:3,name:"Modern Laptop Computer",price:54999,oldPrice:64999,rating:4.7,discount:15,image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"},
+{id:4,name:"Smart Watch Series",price:3999,oldPrice:5999,rating:4.2,discount:33,image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600"},
+{id:5,name:"Premium Running Shoes",price:3499,oldPrice:4999,rating:4.4,discount:30,image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600"},
+{id:6,name:"Modern Backpack",price:1899,oldPrice:2799,rating:4.1,discount:32,image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600"},
+{id:7,name:"Digital Camera",price:32999,oldPrice:39999,rating:4.6,discount:18,image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600"},
+{id:8,name:"Home Coffee Maker",price:5999,oldPrice:7999,rating:4.3,discount:25,image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600"}];
